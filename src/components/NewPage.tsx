@@ -3,7 +3,7 @@ import React from 'react'
 function NewPage() {
     return (
         <div>
-           this is new page 
+          <h1>Intial page view</h1>
         </div>
     )
 }
