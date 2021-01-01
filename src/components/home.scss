@@ -1,0 +1,31 @@
+.home-page {
+  background: #bbd614;
+  color: black;
+  height: 80vh;
+
+  .home-heading {
+    position: absolute;
+    left: 15%;
+    bottom: 76%;
+       font-family: "Oswald", sans-serif;
+    font-size: 48px;
+    line-height: 71px;
+  }
+  .home-content {
+    position: absolute;
+    left: 15%;
+    bottom: 43%;
+    width: 70%;
+    font-family: Oswald;
+    font-size: 24px;
+    line-height: 36px;
+    text-align: center;
+  }
+  .home-button {
+    position: absolute;
+left: 45%;
+top: 55%;
+color: black!important;
+border-radius: 10px;
+  }
+}
