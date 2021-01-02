@@ -1,0 +1,83 @@
+import React from "react";
+import { Link, Route, Switch } from "react-router-dom";
+import {
+  Grid,
+  Menu,
+  Segment,
+  Sidebar,
+  Icon,
+  Button,
+  Header,
+  Input,
+} from "semantic-ui-react";
+import Home from "./components/Home";
+import NewPage from "./components/NewPage";
+import "./App.css";
+
+function App() {
+  const [visible, setVisible] = React.useState(false);
+  return (
+    <Grid columns={1}>
+      <div className="nav-bar">
+        <Button secondary onClick={() => setVisible(true)}>
+          <Icon name="list" />
+        </Button>
+      </div>
+      <div className="nav-bar">
+        <Header as="h2">
+          <Icon name="universal access" />
+          <Header.Content>Community Finder</Header.Content>
+        </Header>
+      </div>
+      <Grid.Column>
+        <Sidebar.Pushable as={Segment.Group} raised>
+          <Sidebar
+            as={Menu}
+            animation="scale down"
+            icon="labeled"
+            inverted
+            onHide={() => setVisible(false)}
+            vertical
+            visible={visible}
+            width="wide"
+            color="black"
+          >
+            <Menu.Item>
+              <Input placeholder="Search" />
+            </Menu.Item>
+            <Menu.Item>
+              <Link to="/home">Home</Link>
+            </Menu.Item>
+            <Menu.Item as="a">Artist</Menu.Item>
+            <Menu.Item as="a">Fashion</Menu.Item>
+            <Menu.Item as="a">Cooking</Menu.Item>
+            <Menu.Item as="a">Software-Devlopment</Menu.Item>
+            <Menu.Item as="a">Traveling</Menu.Item>
+            <Menu.Item>
+              <Menu.Header>CMS Solutions</Menu.Header>
+
+              <Menu.Menu>
+                <Menu.Item name="rails" />
+                <Menu.Item name="python" />
+                <Menu.Item name="php" />
+              </Menu.Menu>
+            </Menu.Item>
+          </Sidebar>
+
+          <Segment padded>
+            <Switch>
+              <Route path="/home">
+                <Home />
+              </Route>
+              <Route exact path="/">
+                <NewPage />
+              </Route>
+            </Switch>
+          </Segment>
+        </Sidebar.Pushable>
+      </Grid.Column>
+    </Grid>
+  );
+}
+
+export default App;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, Route, Switch } from "react-router-dom";
 import {
   Grid,
@@ -13,9 +13,38 @@ import {
 import Home from "./components/Home";
 import NewPage from "./components/NewPage";
 import "./App.css";
+import "./menuItem";
+import menuItem from "./menuItem";
+
+function createEntery(menu: any) {
+  return (
+    <Menu.Item>
+      <Menu.Header>{menu.heading}</Menu.Header>
+      <Menu.Menu>
+        <Menu.Item name={menu.item1} />
+        <Menu.Item name={menu.item2} />
+        <Menu.Item name={menu.item3} />
+        <Menu.Item name={menu.item4} />
+        <Menu.Item name={menu.item5} />
+      </Menu.Menu>
+    </Menu.Item>
+  );
+}
 
 function App() {
   const [visible, setVisible] = React.useState(false);
+  const [search, setSearch] = useState("");
+  const [Results, setResults] = useState([]);
+
+
+  useEffect(() => {
+    setResults(
+      menuItem.filter((menuItem: { heading: string; }) =>
+        menuItem.heading.toLowerCase().includes(search.toLowerCase())
+      )
+    );
+  }, [search]);
+
   return (
     <Grid columns={1}>
       <div className="nav-bar">
@@ -40,20 +69,16 @@ function App() {
             vertical
             visible={visible}
             width="wide"
-            color="teal"
+            color="black"
           >
             <Menu.Item>
-              <Input placeholder="Search" />
+              <Input placeholder="Search" id="mySearch"  onChange={(event) => setSearch(event.target.value)} />
             </Menu.Item>
             <Menu.Item>
               <Link to="/home">Home</Link>
             </Menu.Item>
-            <Menu.Item as="a">Artist</Menu.Item>
-            <Menu.Item as="a">Fashion</Menu.Item>
-            <Menu.Item as="a">Cooking</Menu.Item>
-            <Menu.Item as="a">Software-Devlopment</Menu.Item>
-            <Menu.Item as="a">Traveling</Menu.Item>
             
+            {/* {menuItem.map(createEntery)} */}
           </Sidebar>
 
           <Segment padded>

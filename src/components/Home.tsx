@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Button, Icon } from "semantic-ui-react";
 import "./home.css";
-
 export class Home extends Component {
   render() {
     return (
@@ -17,7 +16,7 @@ export class Home extends Component {
           about the community so that in this digital age you will no feel
           alone.
         </p>
-        <Button primary color="blue" className="home-button">
+        <Button primary color="blue" className="home-button" >
           Let Start!!
         </Button>
       </div>
