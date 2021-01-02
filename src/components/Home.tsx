@@ -10,11 +10,11 @@ export class Home extends Component {
           Community finder
         </h1>
         <p className="home-content">
-          this is palce to find where you belong.choose the comunity u want to
-          signed up for then register yourself with community driven newsletter
-          which stay connect here the setup event and meetup to keep you updated
-          about the community so that in this digital age you will no feel
-          alone.
+          this is palce to find where you belong,Choose the community you want to
+          signed up for then register yourself with community driven newsletters.
+          which will keep you updated in this forever evolving world,Subscrice your self
+          for communitny driven meetup and event. So that in this digital world you will 
+          never feel alone.
         </p>
         <Button primary color="blue" className="home-button" >
           Let Start!!
