@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
-
+import './formStyles.css';
 interface Values {
   firstName: string;
   lastName: string;
@@ -30,7 +30,7 @@ export class FormEle extends Component {
       >
         <Form>
           <label htmlFor="firstName"className='input1'>First Name</label>
-          <Field id="firstName" name="firstName" placeholder="John" />
+          <Field id="firstName" name="firstName" placeholder="John"   />
 
           <label htmlFor="lastName"className='input2'>Last Name</label>
           <Field id="lastName" name="lastName" placeholder="Doe" />
@@ -41,9 +41,10 @@ export class FormEle extends Component {
             name="email"
             placeholder="john@acme.com"
             type="email"
+            
           />
 
-          <button type="submit" className='form-button'>Submit</button>
+          <button type="submit" className='form-button '>Submit</button>
         </Form>
       </Formik>
             </div>

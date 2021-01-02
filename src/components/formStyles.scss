@@ -1,0 +1,57 @@
+.form-back{
+    background: #1AA9B2;
+    height: 80vh;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .input1{
+        display: block;
+        font-family: Oswald;
+        font-size: 24px;
+        line-height: 36px;
+    }
+    .input2{
+        display: block;
+        font-family: Oswald;
+        font-size: 24px;
+        line-height: 36px;
+    }
+    .input3{
+        display: block;
+        font-family: Oswald;
+        font-size: 24px;
+        line-height: 36px;
+    }
+   #email{
+        width: 300px;
+        height: 30px;
+        background: #5ECBED;
+        border: none;
+    }
+    #firstName{
+        width: 300px;
+        height: 30px;
+        background: #5ECBED;
+        border: none;
+    }
+    #lastName{
+        width: 300px;
+        height: 30px;
+        background: #5ECBED;
+        border: none;
+    }
+    .form-button{
+        display: block;
+        margin-top: 30px;
+        margin-left: 65%;
+        width: 100px;
+        height: 40px;
+        background: #046A58;
+        color: white;
+        border-radius: 20px;
+        border: none;
+    }
+
+}

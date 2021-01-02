@@ -11,7 +11,6 @@ import {
   Input,
 } from "semantic-ui-react";
 import Home from "./components/Home";
-import NewPage from "./components/NewPage";
 import "./App.css";
 import "./menuItem";
 import menuItem from "./menuItem";
@@ -22,11 +21,11 @@ function createEntery(menu: any) {
     <Menu.Item>
       <Menu.Header>{menu.heading}</Menu.Header>
       <Menu.Menu>
-        <Menu.Item name={menu.item1} />
-        <Menu.Item name={menu.item2} />
-        <Menu.Item name={menu.item3} />
-        <Menu.Item name={menu.item4} />
-        <Menu.Item name={menu.item5} />
+        <Menu.Item ><Link to="/news">{menu.item1}</Link></Menu.Item>
+        <Menu.Item ><Link to="/news">{menu.item2}</Link></Menu.Item>
+        <Menu.Item ><Link to="/news">{menu.item3}</Link></Menu.Item>
+        <Menu.Item ><Link to="/news">{menu.item4}</Link></Menu.Item>
+        <Menu.Item ><Link to="/news">{menu.item5}</Link></Menu.Item>
       </Menu.Menu>
     </Menu.Item>
   );
@@ -78,7 +77,7 @@ function App() {
               <Input placeholder="Search" id="mySearch"  onChange={(event) => setSearch(event.target.value)} />
             </Menu.Item>
             <Menu.Item>
-              <Link to="/home">Home</Link>
+              <Link to="/">Home</Link>
             </Menu.Item>
            
             {Results.map(createEntery)}
@@ -86,10 +85,10 @@ function App() {
 
           <Segment padded>
             <Switch>
-              <Route path="/home">
+              <Route exact path="/">
                 <Home />
               </Route>
-              <Route exact path="/">
+              <Route  path="/news">
                 <FormEle />
               </Route>
             </Switch>

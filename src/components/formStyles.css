@@ -1,0 +1,73 @@
+.form-back {
+  background: #1AA9B2;
+  height: 80vh;
+  color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.form-back .input1 {
+  display: block;
+  font-family: Oswald;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.form-back .input2 {
+  display: block;
+  font-family: Oswald;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.form-back .input3 {
+  display: block;
+  font-family: Oswald;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.form-back #email {
+  width: 300px;
+  height: 30px;
+  background: #5ECBED;
+  border: none;
+}
+
+.form-back #firstName {
+  width: 300px;
+  height: 30px;
+  background: #5ECBED;
+  border: none;
+}
+
+.form-back #lastName {
+  width: 300px;
+  height: 30px;
+  background: #5ECBED;
+  border: none;
+}
+
+.form-back .form-button {
+  display: block;
+  margin-top: 30px;
+  margin-left: 65%;
+  width: 100px;
+  height: 40px;
+  background: #046A58;
+  color: white;
+  border-radius: 20px;
+  border: none;
+}
+/*# sourceMappingURL=formStyles.css.map */
