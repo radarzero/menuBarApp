@@ -7,11 +7,11 @@ interface Values {
   email: string;
 }
 
-export class NewPage extends Component {
-  render() {
-    return (
-      <div>
-          <h1>Signup</h1>
+export class FormEle extends Component {
+    render() {
+        return (
+            <div className='form-back'>
+                 <h1 className='form-heading' >Signup for newsletter</h1>
       <Formik
         initialValues={{
           firstName: '',
@@ -29,13 +29,13 @@ export class NewPage extends Component {
         }}
       >
         <Form>
-          <label htmlFor="firstName">First Name</label>
+          <label htmlFor="firstName"className='input1'>First Name</label>
           <Field id="firstName" name="firstName" placeholder="John" />
 
-          <label htmlFor="lastName">Last Name</label>
+          <label htmlFor="lastName"className='input2'>Last Name</label>
           <Field id="lastName" name="lastName" placeholder="Doe" />
 
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email"className='input3'>Email</label>
           <Field
             id="email"
             name="email"
@@ -43,12 +43,12 @@ export class NewPage extends Component {
             type="email"
           />
 
-          <button type="submit">Submit</button>
+          <button type="submit" className='form-button'>Submit</button>
         </Form>
       </Formik>
-      </div>
-    );
-  }
+            </div>
+        );
+    }
 }
 
-export default NewPage;
+export default FormEle;

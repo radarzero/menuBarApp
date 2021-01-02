@@ -15,6 +15,7 @@ import NewPage from "./components/NewPage";
 import "./App.css";
 import "./menuItem";
 import menuItem from "./menuItem";
+import FormEle from "./components/FormEle";
 
 function createEntery(menu: any) {
   return (
@@ -33,17 +34,19 @@ function createEntery(menu: any) {
 
 function App() {
   const [visible, setVisible] = React.useState(false);
-  const [search, setSearch] = useState("");
-  const [Results, setResults] = useState([]);
+  const [Search, setSearch] = React.useState("");
+  const [Results, setResults] = React.useState([{}]);
 
 
   useEffect(() => {
-    setResults(
-      menuItem.filter((menuItem: { heading: string; }) =>
-        menuItem.heading.toLowerCase().includes(search.toLowerCase())
-      )
-    );
-  }, [search]);
+     setResults(menuItem.filter((item) => item.heading.toLowerCase().includes(Search.toLowerCase())));
+  },  [Search]);
+  // useEffect(()=>{
+  //   const res=menuItem.filter(function(val){
+  //     return (val.heading.search(Search));
+  //   });
+  //   setResults(res);
+  // });
 
   return (
     <Grid columns={1}>
@@ -77,8 +80,8 @@ function App() {
             <Menu.Item>
               <Link to="/home">Home</Link>
             </Menu.Item>
-            
-            {/* {menuItem.map(createEntery)} */}
+           
+            {Results.map(createEntery)}
           </Sidebar>
 
           <Segment padded>
@@ -87,7 +90,7 @@ function App() {
                 <Home />
               </Route>
               <Route exact path="/">
-                <NewPage />
+                <FormEle />
               </Route>
             </Switch>
           </Segment>
