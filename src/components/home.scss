@@ -2,19 +2,16 @@
   background: #bbd614;
   color: black;
   height: 80vh;
-
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   .home-heading {
-    position: absolute;
-    left: 15%;
-    bottom: 76%;
-       font-family: "Oswald", sans-serif;
+    font-family: "Oswald", sans-serif;
     font-size: 48px;
     line-height: 71px;
   }
   .home-content {
-    position: absolute;
-    left: 15%;
-    bottom: 43%;
     width: 70%;
     font-family: Oswald;
     font-size: 24px;
@@ -22,10 +19,7 @@
     text-align: center;
   }
   .home-button {
-    position: absolute;
-left: 45%;
-top: 55%;
-color: black!important;
-border-radius: 10px;
+    color: black !important;
+    border-radius: 10px;
   }
 }
