@@ -17,16 +17,12 @@ import menuItem from "./menuItem";
 import FormEle from "./components/FormEle";
 
 function createEntery(menu: any) {
+  let x = menu.item === "Home";
   return (
     <Menu.Item>
-      <Menu.Header>{menu.heading}</Menu.Header>
-      <Menu.Menu>
-        <Menu.Item ><Link to="/news">{menu.item1}</Link></Menu.Item>
-        <Menu.Item ><Link to="/news">{menu.item2}</Link></Menu.Item>
-        <Menu.Item ><Link to="/news">{menu.item3}</Link></Menu.Item>
-        <Menu.Item ><Link to="/news">{menu.item4}</Link></Menu.Item>
-        <Menu.Item ><Link to="/news">{menu.item5}</Link></Menu.Item>
-      </Menu.Menu>
+      <Menu.Header>
+        <Link to={x ? "/" : "/news"}>{menu.item}</Link>
+      </Menu.Header>
     </Menu.Item>
   );
 }
@@ -36,16 +32,15 @@ function App() {
   const [Search, setSearch] = React.useState("");
   const [Results, setResults] = React.useState([{}]);
 
-
   useEffect(() => {
-     setResults(menuItem.filter((item) => item.heading.toLowerCase().includes(Search.toLowerCase())));
-  },  [Search]);
-  // useEffect(()=>{
-  //   const res=menuItem.filter(function(val){
-  //     return (val.heading.search(Search));
-  //   });
-  //   setResults(res);
-  // });
+    setResults(
+      menuItem.filter((item) =>
+        item.item.toLowerCase().includes(Search.toLowerCase())
+      )
+    );
+  }, [Search]);
+  console.log(Search);
+  console.log(Results);
 
   return (
     <Grid columns={1}>
@@ -74,13 +69,13 @@ function App() {
             color="black"
           >
             <Menu.Item>
-              <Input placeholder="Search" id="mySearch"  onChange={(event) => setSearch(event.target.value)} />
+              <Input
+                placeholder="Search"
+                id="mySearch"
+                onChange={(event) => setSearch(event.target.value)}
+              />
             </Menu.Item>
-            <Menu.Item>
-              <Link to="/">Home</Link>
-            </Menu.Item>
-           
-            {Results.map(createEntery)}
+            <Menu.Item>{Results.map(createEntery)}</Menu.Item>
           </Sidebar>
 
           <Segment padded>
@@ -88,7 +83,7 @@ function App() {
               <Route exact path="/">
                 <Home />
               </Route>
-              <Route  path="/news">
+              <Route path="/news">
                 <FormEle />
               </Route>
             </Switch>
