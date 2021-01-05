@@ -2,7 +2,7 @@ const menuItem = [
   { id: 0, item: "Home" },
   { id: 1, item: "Dancer" },
   { id: 2, item: "Musician" },
-  { id: 3, item: "Panter" },
+  { id: 3, item: "Painter" },
   { id: 4, item: "Threater-artist" },
   { id: 5, item: "Art-Designer" },
 
