@@ -13,7 +13,6 @@ import {
 import Home from "./components/Home";
 import "./App.css";
 import "./menuItem";
-import menuItem from "./menuItem";
 import FormEle from "./components/FormEle";
 import menuEle from "./menuData";
 
@@ -41,12 +40,33 @@ function createEntery(menu: any) {
 
 function App() {
   const [visible, setVisible] = React.useState(false);
-  // const [Search, setSearch] = React.useState("");
-  // const [Results, setResults] = React.useState([{}]);
+  const [Search, setSearch] = React.useState("");
+  const [Results, setResults] = React.useState([{}]);
 
-  // useEffect(() => {
-  //    setResults(menuItem.filter((item) => item.heading.toLowerCase().includes(Search.toLowerCase())));
-  // },  [Search]);
+  useEffect(() => {
+    setResults(
+      menuEle.map(function (item) {
+        const reqArry = [];
+        const obj = {
+          name: "",
+          children: [{}],
+        };
+        const x = item.name
+          .toLocaleLowerCase()
+          .includes(Search.toLocaleLowerCase());
+        if (x) {
+          obj.name = item.name;
+        }
+        obj.children = item.children.filter((child: { name: string }) =>
+          child.name.toLowerCase().includes(Search.toLowerCase())
+        );
+        reqArry.push(obj);
+        return reqArry;
+      })
+    );
+  }, [Search]);
+  console.log(menuEle);
+  console.log(Results);
 
   return (
     <Grid columns={1}>
@@ -75,9 +95,13 @@ function App() {
             color="black"
           >
             <Menu.Item>
-              <Input placeholder="Search" id="mySearch" />
+              <Input
+                placeholder="Search"
+                id="mySearch"
+                onChange={(event) => setSearch(event.target.value)}
+              />
             </Menu.Item>
-            {menuEle.map(createEntery)}
+            {Results.map(x=>(createEntery))}
           </Sidebar>
 
           <Segment padded>
