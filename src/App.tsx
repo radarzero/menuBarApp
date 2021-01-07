@@ -107,7 +107,7 @@ function App() {
           <Segment padded>
             <Switch>
               <Route exact path="/">
-                <Home />
+                 <Home />
               </Route>
               <Route path="/news">
                 <FormEle />
