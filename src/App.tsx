@@ -13,16 +13,27 @@ import {
 import Home from "./components/Home";
 import "./App.css";
 import "./menuItem";
-import menuItem from "./menuItem";
 import FormEle from "./components/FormEle";
+import menuEle from "./menuData";
+
+function createItem(item: { name: React.ReactNode }) {
+  return (
+    <Menu.Menu>
+      <Menu.Item>
+        <Link to="/news">{item.name}</Link>
+      </Menu.Item>
+    </Menu.Menu>
+  );
+}
 
 function createEntery(menu: any) {
-  let x = menu.item === "Home";
+  let x = menu.name === "Home";
   return (
     <Menu.Item>
       <Menu.Header>
-        <Link to={x ? "/" : "/news"}>{menu.item}</Link>
+        <Link to={x ? "/" : "#"}>{menu.name}</Link>
       </Menu.Header>
+      {menu.children.map(createItem)}
     </Menu.Item>
   );
 }
@@ -34,12 +45,27 @@ function App() {
 
   useEffect(() => {
     setResults(
-      menuItem.filter((item) =>
-        item.item.toLowerCase().includes(Search.toLowerCase())
-      )
+      menuEle.map(function (item) {
+        // const reqArry = [];
+        const obj = {
+          name: "",
+          children: [{}],
+        };
+        const x = item.name
+          .toLocaleLowerCase()
+          .includes(Search.toLocaleLowerCase());
+        if (x) {
+          obj.name = item.name;
+        }
+        obj.children = item.children.filter((child: { name: string }) =>
+          child.name.toLowerCase().includes(Search.toLowerCase())
+        );
+        // reqArry.push(obj);
+        return obj;
+      })
     );
   }, [Search]);
-  console.log(Search);
+  console.log(menuEle);
   console.log(Results);
 
   return (
@@ -75,7 +101,7 @@ function App() {
                 onChange={(event) => setSearch(event.target.value)}
               />
             </Menu.Item>
-            <Menu.Item>{Results.map(createEntery)}</Menu.Item>
+            {Results.map(createEntery)}
           </Sidebar>
 
           <Segment padded>
