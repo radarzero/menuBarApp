@@ -46,7 +46,7 @@ function App() {
   useEffect(() => {
     setResults(
       menuEle.map(function (item) {
-        const reqArry = [];
+        // const reqArry = [];
         const obj = {
           name: "",
           children: [{}],
@@ -60,8 +60,8 @@ function App() {
         obj.children = item.children.filter((child: { name: string }) =>
           child.name.toLowerCase().includes(Search.toLowerCase())
         );
-        reqArry.push(obj);
-        return reqArry;
+        // reqArry.push(obj);
+        return obj;
       })
     );
   }, [Search]);
@@ -101,7 +101,7 @@ function App() {
                 onChange={(event) => setSearch(event.target.value)}
               />
             </Menu.Item>
-            {Results.map(x=>(createEntery))}
+            {Results.map(createEntery)}
           </Sidebar>
 
           <Segment padded>
