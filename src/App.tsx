@@ -16,7 +16,7 @@ import "./menuItem";
 import FormEle from "./components/FormEle";
 import menuEle from "./menuData";
 
-function createItem(item: { name: React.ReactNode }) {
+function createItem(item:any) {
   return (
     <Menu.Menu>
       <Menu.Item>
