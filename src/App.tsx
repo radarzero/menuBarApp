@@ -41,7 +41,27 @@ function createEntery(menu: any) {
 function App() {
   const [visible, setVisible] = React.useState(false);
   const [Search, setSearch] = React.useState("");
-  const [Results, setResults] = React.useState([{}]);
+  const z= menuEle.map(function (item) {
+    // const reqArry = [];
+    const obj = {
+      name: "",
+      children: [{}],
+    };
+    const x = item.name
+      .toLocaleLowerCase()
+      .includes(Search.toLocaleLowerCase());
+    if (x) {
+      obj.name = item.name;
+    }
+    obj.children = item.children.filter((child: { name: string }) =>
+      child.name.toLowerCase().includes(Search.toLowerCase())
+    );
+    // reqArry.push(obj);
+    return obj;
+  });
+  
+  const [Results, setResults] = React.useState(z);
+ 
 
   useEffect(() => {
     setResults(
