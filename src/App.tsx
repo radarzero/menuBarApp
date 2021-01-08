@@ -16,7 +16,7 @@ import "./menuItem";
 import FormEle from "./components/FormEle";
 import menuEle from "./menuData";
 
-function createItem(item:any) {
+function createItem(item: any) {
   return (
     <Menu.Menu>
       <Menu.Item>
@@ -27,21 +27,25 @@ function createItem(item:any) {
 }
 
 function createEntery(menu: any) {
-  let x = menu.name === "Home";
-  return (
-    <Menu.Item>
-      <Menu.Header>
-        <Link to={x ? "/" : "#"}>{menu.name}</Link>
-      </Menu.Header>
-      {menu.children.map(createItem)}
-    </Menu.Item>
-  );
+  if (menu.name === "") {
+    return null;
+  } else {
+    let x = menu.name === "Home";
+    return (
+      <Menu.Item>
+        <Menu.Header>
+          <Link to={x ? "/" : "#"}>{menu.name}</Link>
+        </Menu.Header>
+        {menu.children.map(createItem)}
+      </Menu.Item>
+    );
+  }
 }
 
 function App() {
   const [visible, setVisible] = React.useState(false);
   const [Search, setSearch] = React.useState("");
-  const z= menuEle.map(function (item) {
+  const z = menuEle.map(function (item) {
     // const reqArry = [];
     const obj = {
       name: "",
@@ -57,11 +61,15 @@ function App() {
       child.name.toLowerCase().includes(Search.toLowerCase())
     );
     // reqArry.push(obj);
+    if (obj.children.length > 0) {
+      if (obj.name === null) {
+        obj.name = item.name;
+      }
+    }
     return obj;
   });
-  
+
   const [Results, setResults] = React.useState(z);
- 
 
   useEffect(() => {
     setResults(
@@ -81,12 +89,15 @@ function App() {
           child.name.toLowerCase().includes(Search.toLowerCase())
         );
         // reqArry.push(obj);
+        if (obj.children.length > 0) {
+          if (obj.name === "") {
+            obj.name = item.name;
+          }
+        }
         return obj;
       })
     );
   }, [Search]);
-  console.log(menuEle);
-  console.log(Results);
 
   return (
     <Grid columns={1}>
@@ -127,7 +138,7 @@ function App() {
           <Segment padded>
             <Switch>
               <Route exact path="/">
-                 <Home />
+                <Home />
               </Route>
               <Route path="/news">
                 <FormEle />
